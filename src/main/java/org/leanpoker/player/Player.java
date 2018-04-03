@@ -60,9 +60,9 @@ public class Player {
 		if (pokerHands == PokerHands.PAIR) {
 			return (int) (state.current_buy_in);
 		}
-		if (pokerHands == PokerHands.HIGH_CARD) {
-			return (int) (state.current_buy_in);
-		}
+		//if (pokerHands == PokerHands.HIGH_CARD) {
+			//return (int) (state.current_buy_in);
+		//}
 
 		return 0;
 	}
