@@ -25,7 +25,7 @@ public class Player {
 																	// target2
 
 		Card[] hands = null;
-		PlayerUs player = null;
+		PlayerUs player = new PlayerUs();
 
 		System.err.println("ERRRROR: " + state);
 		
