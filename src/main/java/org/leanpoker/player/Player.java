@@ -34,7 +34,7 @@ public class Player {
 			}
 		}
 		
-	
+		
 
 		PokerHands pokerHands = checkCommunityCards(hands, state.community_cards);
 		
@@ -46,16 +46,16 @@ public class Player {
 			return (int) (state.current_buy_in + player.stack);
 		}
 		if (pokerHands == PokerHands.STRAIGHT) {
-			return (int) (state.current_buy_in + player.stack * 0.4);
+			return (int) (state.current_buy_in + player.stack * 0.38);
 		}
 		if (pokerHands == PokerHands.FLUSH) {
-			return (int) (state.current_buy_in + player.stack * 0.5);
+			return (int) (state.current_buy_in + player.stack * 0.52);
 		}
 		if (pokerHands == PokerHands.THREE_OF_A_KIND) {
-			return (int) (state.current_buy_in + player.stack * 0.4);
+			return (int) (state.current_buy_in + player.stack * 0.37);
 		}
 		if (pokerHands == PokerHands.TWO_PAIR) {
-			return (int) (state.current_buy_in + player.stack * 0.3);
+			return (int) (state.current_buy_in + player.stack * 0.27);
 		}
 		if (pokerHands == PokerHands.PAIR) {
 			return (int) (state.current_buy_in);
