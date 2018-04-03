@@ -38,7 +38,6 @@ public class Card {
 	}
 	
 	public boolean isPicture() {
-		return this.getValue() % 100 >= 11;
+		return this.getValue() % 100 >= 10;
 	}
-
 }
