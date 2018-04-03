@@ -64,7 +64,7 @@ public class Player {
 			//return (int) (state.current_buy_in);
 		//}
 
-		return 0;
+		return state.current_buy_in;
 	}
 	
 
