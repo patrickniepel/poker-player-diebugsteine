@@ -46,16 +46,16 @@ public class Player {
 			return (int) (state.current_buy_in + player.stack);
 		}
 		if (pokerHands == PokerHands.STRAIGHT) {
-			return (int) (state.current_buy_in + player.stack * 0.38);
+			return (int) (state.current_buy_in + player.stack * 0.42);
 		}
 		if (pokerHands == PokerHands.FLUSH) {
-			return (int) (state.current_buy_in + player.stack * 0.52);
+			return (int) (state.current_buy_in + player.stack * 0.54);
 		}
 		if (pokerHands == PokerHands.THREE_OF_A_KIND) {
-			return (int) (state.current_buy_in + player.stack * 0.37);
+			return (int) (state.current_buy_in + player.stack * 0.42);
 		}
 		if (pokerHands == PokerHands.TWO_PAIR) {
-			return (int) (state.current_buy_in + player.stack * 0.27);
+			return (int) (state.current_buy_in + player.stack * 0.32);
 		}
 		if (pokerHands == PokerHands.PAIR) {
 			return (int) (state.current_buy_in);
