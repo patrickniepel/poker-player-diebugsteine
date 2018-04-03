@@ -40,6 +40,10 @@ public class Player {
 		}
 
 		PokerHands pokerHands = checkCommunityCards(cards, state.community_cards);
+		
+		if (pokerHands == PokerHands.THREE_OF_A_KIND) {
+			return (int) (player.stack * 0.4);
+		}
 
 		if (pokerHands == PokerHands.TWO_PAIR) {
 			return (int) (player.stack * 0.3);
@@ -98,6 +102,10 @@ public class Player {
 
 		Set<String> keys = dict.keySet();
 		ArrayList list = new ArrayList(keys);
+		
+		if (hasThreeOfAKind(list, dict)) {
+			return PokerHands.THREE_OF_A_KIND;
+		}
 
 		if (hasTwoPair(list, dict)) {
 			return PokerHands.TWO_PAIR;
@@ -142,6 +150,23 @@ public class Player {
 		}
 
 		return result >= 2;
+	}
+	
+	public static boolean hasThreeOfAKind(ArrayList list, HashMap<String, Integer> dict) {
+
+		int result = 0;
+
+		for (int i = 0; i < list.size(); i++) {
+			String rank = list.get(i).toString();
+
+			int appearanceOfRank = dict.get(rank);
+
+			if (appearanceOfRank >= 3) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public static void showdown(JsonElement game) {
