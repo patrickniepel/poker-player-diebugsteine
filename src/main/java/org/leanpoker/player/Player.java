@@ -24,22 +24,25 @@ public class Player {
 																	// json into
 																	// target2
 
-		Card[] cards = null;
+		Card[] hands = null;
 		PlayerUs player = null;
 
+		System.err.println("ERRRROR: " + state);
+		
 		for (int i = 0; i < state.player.length; i++) {
 			player = state.player[i];
 			if (player.hole_cards != null) {
-				cards = player.hole_cards;
-
+				hands = player.hole_cards;
 			}
 		}
+		
+		
 
 		//if (shouldFold(cards)) {
 			//return 0;
 		//}
 
-		PokerHands pokerHands = checkCommunityCards(cards, state.community_cards);
+		PokerHands pokerHands = checkCommunityCards(hands, state.community_cards);
 		
 		if (pokerHands == PokerHands.FOUR_OF_A_KIND) {
 			return (int) (player.stack);
