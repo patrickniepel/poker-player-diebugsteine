@@ -18,21 +18,41 @@ public class Player {
     	//String json = gson.toJson); // serializes target to Json
     	GameState state = gson.fromJson(request, GameState.class); // deserializes json into target2
     	
+    	Card[] cards = null;
+    	PlayerUs player = null;
+    	
     	for(int i = 0; i < state.player.length; i++) {
-    		PlayerUs player = state.player[i];
+    		player = state.player[i];
     		if(player.hole_cards != null) {
-    			Card[] cards = player.hole_cards;
+    			cards = player.hole_cards;
     			
-    			//Paar
-    			if(cards[0].rank == cards[1].rank) {
-    				return (int) (player.stack * 0.5);
-    			}
     		}
     	}
     	
+    	if(shouldFold(cards)) {
+    		return 0;
+    	}
+    	
+		//Paar
+		if(cards[0].rank == cards[1].rank) {
+			return (int) (player.stack * 0.5);
+		}
         
     	 
     	return state.current_buy_in;
+    }
+    
+    public static boolean shouldFold(Card[] hand) {
+    	int difference = 0;
+    	Card card1 = hand[0];
+    	Card card2 = hand[1];
+    	difference = Math.abs(card1.getValue() - card2.getValue());
+    	boolean hasPicture = (card1.isPicture() || card2.isPicture());
+    	if (hasPicture) {
+    		return false;
+    	} else {
+    		return difference >= 6;
+    	}
     }
 
     public static void showdown(JsonElement game) {

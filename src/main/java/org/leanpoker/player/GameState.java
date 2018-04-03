@@ -12,4 +12,5 @@ public class GameState {
 	public int orbits;
 	public int in_action;
 	public PlayerUs[] player;
+	public Card[] community_cards;
 }
