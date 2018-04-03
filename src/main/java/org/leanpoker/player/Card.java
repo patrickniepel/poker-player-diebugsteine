@@ -19,6 +19,8 @@ public class Card {
 		}
 		else if (rank.equals("A")) {
 			intRank = 14;
+		} else {
+			intRank = Integer.valueOf(rank);
 		}
 
 		if (suit.equals("clubs")) {
