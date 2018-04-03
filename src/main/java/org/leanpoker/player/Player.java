@@ -27,7 +27,7 @@ public class Player {
 		Card[] hands = null;
 		PlayerUs player = new PlayerUs();
 
-		System.err.println("ERRRROR: " + state);
+		System.err.println("ERRRROR1: " + state.player);
 		
 		for (int i = 0; i < state.player.length; i++) {
 			player = state.player[i];
