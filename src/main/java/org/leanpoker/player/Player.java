@@ -26,8 +26,6 @@ public class Player {
 
 		Card[] hands = null;
 		PlayerUs player = new PlayerUs();
-
-		System.err.println("ERRRROR1: " + state.players);
 		
 		for (int i = 0; i < state.players.length; i++) {
 			player = state.players[i];
@@ -36,13 +34,15 @@ public class Player {
 			}
 		}
 		
-		
-
-		//if (shouldFold(cards)) {
-			//return 0;
-		//}
+	
 
 		PokerHands pokerHands = checkCommunityCards(hands, state.community_cards);
+		
+		System.err.println("Blablabalab" + pokerHands.toString());
+		
+		if (shouldFold(hands)) {
+			return 0;
+		}
 		
 		if (pokerHands == PokerHands.FOUR_OF_A_KIND) {
 			return (int) (player.stack);
