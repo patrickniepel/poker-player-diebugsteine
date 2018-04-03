@@ -27,10 +27,10 @@ public class Player {
 		Card[] hands = null;
 		PlayerUs player = new PlayerUs();
 
-		System.err.println("ERRRROR1: " + state.player);
+		System.err.println("ERRRROR1: " + state.players);
 		
-		for (int i = 0; i < state.player.length; i++) {
-			player = state.player[i];
+		for (int i = 0; i < state.players.length; i++) {
+			player = state.players[i];
 			if (player.hole_cards != null) {
 				hands = player.hole_cards;
 			}
