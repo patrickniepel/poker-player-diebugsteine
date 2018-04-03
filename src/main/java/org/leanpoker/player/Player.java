@@ -78,7 +78,7 @@ public class Player {
 		//if(card1.getValue() % 100 < 7 && card2.getValue() % 100 < 7 && card1.getValue() % 100 != card2.getValue() % 100) {
 			//return true;
 		//}
-		if (hasPicture && (card1.getValue() % 100 != card2.getValue() % 100)) {
+		if (hasPicture || (card1.getValue() % 100 != card2.getValue() % 100)) {
 			return false;
 		} else {
 			return difference >= 6;
