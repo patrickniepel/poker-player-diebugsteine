@@ -43,22 +43,22 @@ public class Player {
 		//}
 		
 		if (pokerHands == PokerHands.FOUR_OF_A_KIND) {
-			return (int) (player.stack);
+			return (int) (state.current_buy_in + player.stack);
 		}
 		if (pokerHands == PokerHands.STRAIGHT) {
-			return (int) (player.stack * 0.4);
+			return (int) (state.current_buy_in + player.stack * 0.4);
 		}
 		if (pokerHands == PokerHands.FLUSH) {
-			return (int) (player.stack * 0.5);
+			return (int) (state.current_buy_in + player.stack * 0.5);
 		}
 		if (pokerHands == PokerHands.THREE_OF_A_KIND) {
-			return (int) (player.stack * 0.4);
+			return (int) (state.current_buy_in + player.stack * 0.4);
 		}
 		if (pokerHands == PokerHands.TWO_PAIR) {
-			return (int) (player.stack * 0.3);
+			return (int) (state.current_buy_in + player.stack * 0.3);
 		}
 		if (pokerHands == PokerHands.PAIR) {
-			return (int) (player.stack * 0.25);
+			return (int) (state.current_buy_in);
 		}
 		if (pokerHands == PokerHands.HIGH_CARD) {
 			return (int) (player.stack * 0.1);
@@ -263,15 +263,12 @@ public class Player {
 			int value1 = values[i] % 100;
 			int value2 = values[i+1] % 100;
 			
-			if(value1 + 1 == value2) {
-				
-			}
-			else {
+			if(value1 + 1 != value2) {
 				isStraight = false;
 			}
 		}
 		
-		return false;
+		return isStraight;
 		
 	}
 
