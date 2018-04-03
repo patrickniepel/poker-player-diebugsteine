@@ -35,14 +35,17 @@ public class Player {
 			}
 		}
 
-		if (shouldFold(cards)) {
-			return 0;
-		}
+		//if (shouldFold(cards)) {
+			//return 0;
+		//}
 
 		PokerHands pokerHands = checkCommunityCards(cards, state.community_cards);
 		
 		if (pokerHands == PokerHands.FOUR_OF_A_KIND) {
 			return (int) (player.stack);
+		}
+		if (pokerHands == PokerHands.FLUSH) {
+			return (int) (player.stack * 0.5);
 		}
 		if (pokerHands == PokerHands.THREE_OF_A_KIND) {
 			return (int) (player.stack * 0.4);
@@ -89,7 +92,7 @@ public class Player {
 			values[i] = all[i].getValue();
 		}
 
-		// Paar
+		//Count ranks
 		HashMap<String, Integer> dict = new HashMap<>();
 
 		for (Card card : all) {
@@ -101,12 +104,32 @@ public class Player {
 				dict.put(card.rank, rank + 1);
 			}
 		}
+		
+		//Count suits
+		HashMap<String, Integer> dictSuits = new HashMap<>();
+
+		for (Card card : all) {
+			Integer suitValue = dict.get(card.suit);
+
+			if (suitValue == null) {
+				dict.put(card.suit, 1);
+			} else {
+				dict.put(card.suit, suitValue + 1);
+			}
+		}
 
 		Set<String> keys = dict.keySet();
 		ArrayList list = new ArrayList(keys);
 		
+		Set<String> keysSuits = dictSuits.keySet();
+		ArrayList listSuits = new ArrayList(keysSuits);
+		
 		if (hasFourOfAKind(list, dict)) {
 			return PokerHands.FOUR_OF_A_KIND;
+		}
+		
+		if (hasFlush(listSuits, dictSuits)) {
+			return PokerHands.FLUSH;
 		}
 		
 		if (hasThreeOfAKind(list, dict)) {
@@ -185,6 +208,23 @@ public class Player {
 			int appearanceOfRank = dict.get(rank);
 
 			if (appearanceOfRank >= 4) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+	
+	public static boolean hasFlush(ArrayList list, HashMap<String, Integer> dict) {
+
+		int result = 0;
+
+		for (int i = 0; i < list.size(); i++) {
+			String rank = list.get(i).toString();
+
+			int appearanceOfSuit = dict.get(rank);
+
+			if (appearanceOfSuit >= 5) {
 				return true;
 			}
 		}
