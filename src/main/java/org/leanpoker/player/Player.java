@@ -78,11 +78,23 @@ public class Player {
 		//if(card1.getValue() % 100 < 7 && card2.getValue() % 100 < 7 && card1.getValue() % 100 != card2.getValue() % 100) {
 			//return true;
 		//}
+		
+		/*
 		if (hasPicture || (card1.getValue() % 100 == card2.getValue() % 100)) {
 			return false;
 		} else {
 			return difference >= 6;
 		}
+		*/
+		boolean areSameCards = card1.getValue() % 100 == card2.getValue() % 100;
+		if (areSameCards) {
+			return false;
+		} else if (hasPicture) {
+			return false;
+		} else {
+			return true;
+		}
+		
 	}
 
 	public static PokerHands checkCommunityCards(Card[] hand, Card[] community) {
