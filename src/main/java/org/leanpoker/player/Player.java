@@ -102,8 +102,29 @@ public class Player {
 		if (hasTwoPair(list, dict)) {
 			return PokerHands.TWO_PAIR;
 		}
+		
+		if (hasPair(list, dict)) {
+			return PokerHands.PAIR;
+		}
 
 		return PokerHands.HIGH_CARD;
+	}
+	
+	public static boolean hasPair(ArrayList list, HashMap<String, Integer> dict) {
+
+		int result = 0;
+
+		for (int i = 0; i < list.size(); i++) {
+			String rank = list.get(i).toString();
+
+			int appearanceOfRank = dict.get(rank);
+
+			if (appearanceOfRank >= 2) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 	public static boolean hasTwoPair(ArrayList list, HashMap<String, Integer> dict) {
