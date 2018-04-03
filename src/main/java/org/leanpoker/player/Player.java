@@ -259,18 +259,56 @@ public class Player {
 		}
 		
 		boolean isStraight = true;
+		int lengthOfStraight = 5;
 		
-		for(int i = 0; i < values.length - 1; i++) {
-			int value1 = values[i] % 100;
-			int value2 = values[i+1] % 100;
-			
-			if(value1 + 1 != value2) {
-				isStraight = false;
+		if(all.length < lengthOfStraight) {
+			return false;
+		}
+		
+		if(all.length == 5) {
+			for(int i = 0; i < lengthOfStraight - 1; i++) {
+				
+				int value1 = values[i] % 100;
+				int value2 = values[i+1] % 100;
+				
+				if(value1 + 1 != value2) {
+					isStraight = false;
+				}
+			}
+		}
+		
+		if(all.length == 6) {
+			for(int j = 0; j < 2; j++) {
+				
+				for(int i = j; i < lengthOfStraight - 1 + j; i++) {
+					
+					int value1 = values[i] % 100;
+					int value2 = values[i+1] % 100;
+					
+					if(value1 + 1 != value2) {
+						isStraight = false;
+					}
+				}
+			}
+		}
+		
+
+		if(all.length == 7) {
+			for(int j = 0; j < 3; j++) {
+				
+				for(int i = j; i < lengthOfStraight - 1 + j; i++) {
+					
+					int value1 = values[i] % 100;
+					int value2 = values[i+1] % 100;
+					
+					if(value1 + 1 != value2) {
+						isStraight = false;
+					}
+				}
 			}
 		}
 		
 		return isStraight;
-		
 	}
 
 
