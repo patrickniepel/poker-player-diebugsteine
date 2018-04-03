@@ -38,14 +38,15 @@ public class Player {
 
 		PokerHands pokerHands = checkCommunityCards(hands, state.community_cards);
 		
-		System.err.println("Blablabalab" + pokerHands.toString());
-		
-		if (shouldFold(hands)) {
-			return 0;
-		}
+		//if (shouldFold(hands)) {
+		//	return 0;
+		//}
 		
 		if (pokerHands == PokerHands.FOUR_OF_A_KIND) {
 			return (int) (player.stack);
+		}
+		if (pokerHands == PokerHands.STRAIGHT) {
+			return (int) (player.stack * 0.4);
 		}
 		if (pokerHands == PokerHands.FLUSH) {
 			return (int) (player.stack * 0.5);
@@ -129,6 +130,10 @@ public class Player {
 		
 		if (hasFourOfAKind(list, dict)) {
 			return PokerHands.FOUR_OF_A_KIND;
+		}
+		
+		if (hasStraight(all)) {
+			return PokerHands.STRAIGHT;
 		}
 		
 		if (hasFlush(listSuits, dictSuits)) {
@@ -233,6 +238,41 @@ public class Player {
 		}
 
 		return false;
+	}
+	
+	public static boolean hasStraight(Card[] all) {
+
+		boolean hasAce = false;
+		int[] values = new int[all.length];
+		
+		for(int i = 0; i < all.length; i++) {
+			values[i] = all[i].getValue();
+		}
+		
+		Arrays.sort(values);
+		
+		for(Card card : all) {
+			if(card.rank.equals("A")) {
+				hasAce = true;
+			}
+		}
+		
+		boolean isStraight = true;
+		
+		for(int i = 0; i < values.length - 1; i++) {
+			int value1 = values[i] % 100;
+			int value2 = values[i+1] % 100;
+			
+			if(value1 + 1 == value2) {
+				
+			}
+			else {
+				isStraight = false;
+			}
+		}
+		
+		return false;
+		
 	}
 
 
