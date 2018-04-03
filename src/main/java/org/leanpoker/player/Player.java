@@ -61,11 +61,12 @@ public class Player {
 			return (int) (state.current_buy_in);
 		}
 		if (pokerHands == PokerHands.HIGH_CARD) {
-			return (int) (player.stack * 0.1);
+			return (int) (state.current_buy_in);
 		}
 
-		return state.current_buy_in;
+		return 0;
 	}
+	
 
 	public static boolean shouldFold(Card[] hand) {
 		int difference = 0;
