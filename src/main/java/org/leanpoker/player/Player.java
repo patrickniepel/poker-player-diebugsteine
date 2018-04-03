@@ -72,7 +72,7 @@ public class Player {
 		int difference = 0;
 		Card card1 = hand[0];
 		Card card2 = hand[1];
-		difference = Math.abs(card1.getValue() - card2.getValue());
+		difference = Math.abs(card1.getValue() % 100 - card2.getValue() % 100);
 		boolean hasPicture = (card1.isPicture() && card2.isPicture());
 		
 		//if(card1.getValue() % 100 < 7 && card2.getValue() % 100 < 7 && card1.getValue() % 100 != card2.getValue() % 100) {
