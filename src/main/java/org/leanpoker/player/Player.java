@@ -38,9 +38,9 @@ public class Player {
 
 		PokerHands pokerHands = checkCommunityCards(hands, state.community_cards);
 		
-		//if (shouldFold(hands)) {
-		//	return 0;
-		//}
+		if (shouldFold(hands)) {
+			return 0;
+		}
 		
 		if (pokerHands == PokerHands.FOUR_OF_A_KIND) {
 			return (int) (state.current_buy_in + player.stack);
