@@ -11,5 +11,5 @@ public class GameState {
 	public int dealer;
 	public int orbits;
 	public int in_action;
-	
+	public PlayerUs[] player;
 }
